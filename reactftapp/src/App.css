@@ -1,47 +1,8 @@
-body {
-	color: #e3c584;
+*,
+body,
+html {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 	font-family: "Poppins", sans-serif;
-}
-
-.cont {
-	width: 100%;
-	display: flex;
-}
-div {
-	height: 100vh;
-}
-
-.a1 {
-	width: 15%;
-	background-color: #e3af40;
-}
-
-.a2 {
-	width: 15%;
-	background-color: #e3af40;
-}
-
-.a3 {
-	width: 70%;
-	background-color: #e3c584;
-}
-
-.element {
-	width: 90%;
-	height: 30px;
-	border-radius: 10px;
-	background-color: #b07c0e;
-	cursor: pointer;
-	margin: 20px auto 0;
-}
-
-.element:hover {
-	background-color: #96742a;
-}
-.wewelement {
-	width: 70%;
-	margin: 10px 20px;
-	height: 160px;
-	border-radius: 20px;
-	background-color: #b07c0e;
 }
