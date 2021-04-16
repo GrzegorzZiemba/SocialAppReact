@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Navigation.module.css";
 import Button from "./Button";
-// https://github.com/beautifulinteractions/beautiful-react-hooks
+// https://github.com/beautifulinteractions/beautiful-react-hooks - can also be done with it :)
 import { useWindowSize } from "../hooks/resize";
 const Navigation = () => {
 	let size = useWindowSize();

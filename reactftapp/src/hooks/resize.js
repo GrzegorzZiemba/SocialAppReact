@@ -14,4 +14,4 @@ function useWindowSize() {
 	return size;
 }
 
-export { useWindowSize, ShowWindowDimensions };
+export { useWindowSize };
