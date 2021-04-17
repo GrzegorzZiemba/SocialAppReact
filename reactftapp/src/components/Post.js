@@ -1,23 +1,28 @@
 import React from "react";
-
+import styles from "./Post.module.css";
 const Post = ({ post }) => {
 	return (
 		<>
-			<div
-				style={{
-					margin: "20px auto",
-					width: "500px",
-					minHeight: "350px",
-					backgroundColor: "#9F7833",
-					overflow: "hidden",
-				}}
-			>
-				<p>{post.postTitle}</p>
-				<img
-					src={post.image}
-					alt={post.postTitle}
-					style={{ objectFit: "contain", width: "80%", borderRadius: "20px" }}
-				/>
+			<div className={styles.container}>
+				<div className={styles.nameavatar}>
+					<img
+						className={styles.avatar}
+						src={post.avatar}
+						alt={post.userName}
+					/>
+					<p className={styles.avataruser}>{post.userName}</p>
+				</div>
+				<div className={styles.postContainer}>
+					<img
+						className={styles.postImage}
+						src={post.image}
+						alt={post.postTitle}
+					/>
+				</div>
+				<p className={styles.postParagraph}>
+					<span className={styles.postusername}>{post.userName} </span>
+					{post.postTitle}
+				</p>
 			</div>
 		</>
 	);
