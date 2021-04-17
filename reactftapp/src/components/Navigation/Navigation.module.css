@@ -16,7 +16,7 @@
 	flex-direction: column;
 	align-items: center;
 }
-@media (max-width: 500px) {
+@media (max-width: 770px) {
 	.nav {
 		position: fixed;
 	}

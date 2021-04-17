@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Posts from "../components/Posts";
+import Posts from "../components/Posts/Posts";
 
 const Main = () => {
 	const [posts, setPosts] = useState([

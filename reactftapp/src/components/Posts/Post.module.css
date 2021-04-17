@@ -13,14 +13,6 @@
 	padding: 0.5rem 1rem;
 }
 
-.avatar {
-	width: 6rem;
-	height: 6rem;
-	border-radius: 50%;
-	object-fit: contain;
-	margin: 0 1rem;
-}
-
 .avataruser {
 	font-weight: bold;
 	font-size: 2rem;
@@ -38,12 +30,35 @@
 	align-items: center;
 }
 
+.likeOrNot {
+	background-color: #fff;
+	width: 90%;
+	height: 2rem;
+	margin-top: 0.4rem;
+}
+
 .postusername {
 	font-weight: bold;
 }
 
 .postParagraph {
 	font-size: 1.6rem;
-	margin-top: 1rem;
+	margin-top: 0.5rem;
 	margin-left: 5%;
+}
+
+.commentContainer {
+	margin-left: 5%;
+	margin-top: 0.7rem;
+	display: flex;
+	align-items: center;
+}
+
+.commentUsername {
+	font-weight: bold;
+	margin: 1rem;
+}
+
+.commentParagraph {
+	font-size: 1.4rem;
 }

@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./Navigation.module.css";
-import Button from "./Button";
+import Button from "../Buttons/Button";
 // https://github.com/beautifulinteractions/beautiful-react-hooks - can also be done with it :)
-import { useWindowSize } from "../hooks/resize";
+import { useWindowSize } from "../../hooks/resize";
 const Navigation = () => {
 	let size = useWindowSize();
 	return (
 		<nav className={styles.nav}>
 			<div>
-				{size[0] < 600 ? (
+				{size[0] < 770 ? (
 					<Button small={true} style={{ position: "absolute", top: "0" }}>
 						X
 					</Button>
