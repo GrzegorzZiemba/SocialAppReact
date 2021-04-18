@@ -4,13 +4,10 @@ import Contacts from "./components/Contacts/Contacts";
 import Navigation from "./components/Navigation/Navigation";
 import Main from "./pages/Main";
 import { auth } from "./firebase";
-import Button from "./components/Buttons/Button";
+import Button from "./components/elements/Buttons/Button";
 
 function App() {
 	const [username, setUsername] = useState("");
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [loginOpen, setLoginOpen] = useState(false);
 
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
@@ -25,7 +22,7 @@ function App() {
 	return (
 		<>
 			<div style={{ display: "flex", flexWrap: "nowrap" }}>
-				<Navigation />
+				<Navigation username={username} />
 				<Main />
 				<Contacts />
 			</div>

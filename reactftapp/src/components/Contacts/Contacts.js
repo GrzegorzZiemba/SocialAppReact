@@ -1,6 +1,6 @@
 import React from "react";
 import Avatar from "../Avatar/Avatar";
-import Button from "../Buttons/Button";
+import Button from "../elements/Buttons/Button";
 import styles from "./Contacts.module.css";
 const Contacts = () => {
 	return (

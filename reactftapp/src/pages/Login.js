@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Input from "./elements/Input";
-import Button from "./elements/Button";
+import Input from "../components/elements/Input/Input";
+import Button from "../components/elements/Buttons/Button";
 import styles from "./Login.module.css";
 import { auth } from "../firebase";
-import RadioCheckButton from "./elements/RadioCheckButton";
+import RadioCheckButton from "../components/elements/RadioCheckButton/RadioCheckButton";
 
 const Login = ({ loginOpen }) => {
 	const [username, setUserName] = useState("");
@@ -87,13 +87,13 @@ const Login = ({ loginOpen }) => {
 						}}
 					/>
 					{radio === "" || radio === "login" ? (
-						<Button onClick={signIn} value="Login" />
+						<Button onClick={signIn}> Login</Button>
 					) : (
-						<Button onClick={signUp} value="Sign Up" />
+						<Button onClick={signUp}>Sign Up</Button>
 					)}
 				</form>
 				<div className={styles.exit__button}>
-					<Button onClick={() => loginOpen(false)} value={"X"} />
+					<Button onClick={() => loginOpen(false)}> X </Button>
 				</div>
 			</div>
 		</div>

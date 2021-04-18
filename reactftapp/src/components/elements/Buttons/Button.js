@@ -1,10 +1,14 @@
 import React from "react";
 import styles from "./Button.module.css";
-const Button = ({ children, small }) => {
+const Button = ({ children, small, onClick }) => {
 	let width = small ? 40 : 150;
 	return (
 		<>
-			<button style={{ width: `${width}px` }} className={styles.btn}>
+			<button
+				onClick={onClick}
+				style={{ width: `${width}px` }}
+				className={styles.btn}
+			>
 				{children}
 			</button>
 		</>
