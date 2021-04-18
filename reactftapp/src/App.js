@@ -4,7 +4,6 @@ import Contacts from "./components/Contacts/Contacts";
 import Navigation from "./components/Navigation/Navigation";
 import Main from "./pages/Main";
 import { auth } from "./firebase";
-import Button from "./components/elements/Buttons/Button";
 
 function App() {
 	const [username, setUsername] = useState("");
