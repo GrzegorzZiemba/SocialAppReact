@@ -4,6 +4,8 @@ import Contacts from "./components/Contacts/Contacts";
 import Navigation from "./components/Navigation/Navigation";
 import Main from "./pages/Main";
 import { auth } from "./firebase";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Profile from "./pages/Profile";
 
 function App() {
 	const [username, setUsername] = useState("");
@@ -11,8 +13,6 @@ function App() {
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
-				console.log(authUser.displayName);
-				console.log(authUser.email);
 				console.log(authUser);
 				setUsername(authUser.displayName);
 			}
@@ -20,11 +20,26 @@ function App() {
 	}, [username]);
 	return (
 		<>
-			<div style={{ display: "flex", flexWrap: "nowrap" }}>
-				<Navigation username={username} />
-				<Main />
-				<Contacts />
-			</div>
+			{" "}
+			<Router>
+				<div style={{ display: "flex", flexWrap: "nowrap" }}>
+					<Navigation username={username} />
+
+					<Switch>
+						<Route exact path="/">
+							<Main />{" "}
+						</Route>
+						<Route exact path="/about">
+							{"		About 	"}
+						</Route>
+						<Route exact path="/users">
+							<Profile username={username} />
+						</Route>
+					</Switch>
+
+					<Contacts />
+				</div>
+			</Router>
 		</>
 	);
 }

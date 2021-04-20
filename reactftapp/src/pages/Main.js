@@ -20,7 +20,6 @@ const Main = () => {
 					}))
 				);
 			});
-		console.log(posts);
 	}, [posts]);
 
 	return (

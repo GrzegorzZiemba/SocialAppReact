@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Button from "./elements/Buttons/Button";
 import Input from "./elements/Input/Input";
 import styles from "../pages/Login.module.css";
-
+import btnstyle from "../components/elements/Buttons/Button.module.css";
 import { storage, dataBase } from "../firebase";
 import firebase from "firebase";
 const ImageUpload = ({ username }) => {
 	const [title, setTitle] = useState("");
 	const [progress, setProgress] = useState(0);
 	const [image, setImage] = useState(null);
-	console.log(title);
+
 	const handleUpload = (e) => {
 		// Gdyby uzytkownik jakims cudem zaznaczyl wiecej niz 1 element, tak by tylko 1 byl brany pod uwage, stad to [0]
 		if (e.target.files[0]) {
@@ -41,9 +41,9 @@ const ImageUpload = ({ username }) => {
 					.then((url) => {
 						dataBase.collection("posts").add({
 							timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-							title: title,
-							imgUrl: url,
-							username: username,
+							postTitle: title,
+							image: url,
+							userName: username,
 						});
 						setProgress(0);
 						setTitle("");
@@ -54,7 +54,14 @@ const ImageUpload = ({ username }) => {
 	};
 
 	return (
-		<div>
+		<div
+			style={{
+				backgroundColor: "#9E6515",
+				boxShadow: "4px 4px 3px #000",
+				zIndex: "200",
+				padding: "1.5rem 0",
+			}}
+		>
 			<Input
 				type="text"
 				name="Enter Title"
@@ -64,11 +71,10 @@ const ImageUpload = ({ username }) => {
 				}}
 			/>
 			<div className={styles.image__container}>
-				<input type="file" onChange={handleUpload} />
+				<input type="file" onChange={handleUpload} className={btnstyle.btn} />
 
-				<progress value={progress} max={100} />
-
-				<Button onClick={uploadFile} value="Upload" />
+				<Button onClick={uploadFile}> Upload </Button>
+				<progress value={progress} max={100} className={btnstyle.progress} />
 			</div>
 		</div>
 	);

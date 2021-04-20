@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase";
 import styles from "./Navigation.module.css";
 import Button from "../elements/Buttons/Button";
+import { Link } from "react-router-dom";
+
 // https://github.com/beautifulinteractions/beautiful-react-hooks - can also be done with it :)
 import { useWindowSize } from "../../hooks/resize";
 import Login from "../../pages/Login";
@@ -13,8 +15,6 @@ const Navigation = () => {
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
-				console.log(authUser.displayName);
-				console.log(authUser.email);
 				console.log(authUser);
 				setUsername(authUser.displayName);
 			}
@@ -26,10 +26,6 @@ const Navigation = () => {
 		auth.signOut();
 		window.location.reload(true);
 	};
-
-	useEffect(() => {
-		console.log(loginOpen);
-	}, [loginOpen]);
 
 	return (
 		<>
@@ -45,10 +41,18 @@ const Navigation = () => {
 						""
 					)}
 					<div className={styles.divcont}>
-						<Button>MAIN</Button>
-						<Button>PROFILE </Button>
-						<Button>MESSAGES </Button>
-						<Button>LIKED </Button>
+						<Link to="/">
+							<Button>MAIN</Button>
+						</Link>
+						<Link to="/profile">
+							<Button>PROFILE </Button>
+						</Link>
+						<Link to="/users">
+							<Button>MESSAGES </Button>
+						</Link>
+						<Link to="/about">
+							<Button>LIKED </Button>
+						</Link>
 					</div>
 				</div>
 				<div className={styles.divcont}>

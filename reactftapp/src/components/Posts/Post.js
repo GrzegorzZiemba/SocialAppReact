@@ -1,12 +1,18 @@
 import React from "react";
 import Avatar from "../Avatar/Avatar";
 import styles from "./Post.module.css";
+
 const Post = ({ userName, image, avatar, postTitle }) => {
+	console.log(userName + " JESEM USER");
 	return (
 		<>
 			<div className={styles.container}>
 				<div className={styles.nameavatar}>
-					<Avatar size={"6rem"} avatar={avatar} name={postTitle} />
+					<Avatar
+						size={"6rem"}
+						avatar={userName.photoURL ? userName.photoURL : avatar}
+						name={postTitle}
+					/>
 					<p className={styles.avataruser}>{userName}</p>
 				</div>
 				<div className={styles.postContainer}>

@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Post from "./Post";
-// import { dataBase } from "../../firebase";
+import { auth } from "../../firebase";
 import ImageUpload from "../ImageUpload";
+import Button from "../elements/Buttons/Button";
 
 const Posts = ({ posts }) => {
+	const [username, setUsername] = useState("");
+	const [addItem, setAddItem] = useState(false);
+	useEffect(() => {
+		auth.onAuthStateChanged((authUser) => {
+			if (authUser) {
+				console.log(authUser.displayName);
+				console.log(authUser.email);
+				console.log(authUser);
+				setUsername(authUser.displayName);
+			}
+		});
+	}, [username]);
 	return (
 		<>
-			<ImageUpload />
+			{username ? (
+				<>
+					{addItem ? <ImageUpload username={username} /> : ""}
+					<Button onClick={() => setAddItem(!addItem)}>
+						{!addItem ? "Create Post" : "Hide"}
+					</Button>{" "}
+				</>
+			) : (
+				""
+			)}
+
 			{posts.map(({ post, id }) => (
 				<Post
 					key={id}
 					postId={id}
-					userName={post.userName}
+					userName={username}
 					image={post.image}
 					avatar={post.avatar}
 					postTitle={post.postTitle}

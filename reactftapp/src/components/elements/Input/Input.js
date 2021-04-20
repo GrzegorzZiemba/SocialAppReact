@@ -9,7 +9,7 @@ const Input = ({ name, data, setChange = () => {}, type }) => {
 				onChange={(e) => {
 					setChange(e.target.value);
 				}}
-				maxLength="70"
+				maxLength="200"
 				value={data}
 				type={type ? type : "text"}
 				required
