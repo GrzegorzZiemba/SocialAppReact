@@ -7,6 +7,7 @@ import Button from "../elements/Buttons/Button";
 const Posts = ({ posts }) => {
 	const [username, setUsername] = useState("");
 	const [addItem, setAddItem] = useState(false);
+	const [photo, setPhoto] = useState("");
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
@@ -14,6 +15,7 @@ const Posts = ({ posts }) => {
 				console.log(authUser.email);
 				console.log(authUser);
 				setUsername(authUser.displayName);
+				setPhoto(authUser.photoURL);
 			}
 		});
 	}, [username]);
@@ -21,7 +23,7 @@ const Posts = ({ posts }) => {
 		<>
 			{username ? (
 				<>
-					{addItem ? <ImageUpload username={username} /> : ""}
+					{addItem ? <ImageUpload username={username} photoURL={photo} /> : ""}
 					<Button onClick={() => setAddItem(!addItem)}>
 						{!addItem ? "Create Post" : "Hide"}
 					</Button>{" "}
@@ -35,6 +37,7 @@ const Posts = ({ posts }) => {
 					key={id}
 					postId={id}
 					userName={username}
+					photo={post.photoURL}
 					image={post.image}
 					avatar={post.avatar}
 					postTitle={post.postTitle}

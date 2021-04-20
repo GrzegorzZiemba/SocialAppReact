@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { auth } from "../firebase";
+import { auth, dataBase } from "../firebase";
 import Input from "../components/elements/Input/Input";
 const Profile = ({ username }) => {
 	const [image, setImage] = useState("");
@@ -20,6 +20,10 @@ const Profile = ({ username }) => {
 			.catch(function (error) {
 				console.log(error);
 			});
+
+		dataBase.collection("posts").update({
+			photoURL: image,
+		});
 	};
 
 	return (
