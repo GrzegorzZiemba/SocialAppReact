@@ -12,20 +12,20 @@ const Post = ({ userName, image, avatar, postTitle, photo }) => {
 				</div>
 				<div className={styles.postContainer}>
 					<img className={styles.postImage} src={image} alt={postTitle} />
-					<div className={styles.likeOrNot}></div>
+					{/* <div className={styles.likeOrNot}></div> */}
 				</div>
 
 				<p className={styles.postParagraph}>
 					<span className={styles.postusername}>{userName} </span>
 					{postTitle}
 				</p>
-				<div className={styles.commentContainer}>
+				{/* <div className={styles.commentContainer}>
 					<Avatar size={"3rem"} avatar={avatar} name={postTitle} />
 					<p className={styles.commentParagraph}>
 						<span className={styles.commentUsername}>Username</span>
 						Some comment made by that user
 					</p>
-				</div>
+				</div> */}
 			</div>
 		</>
 	);

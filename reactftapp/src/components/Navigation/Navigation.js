@@ -12,6 +12,8 @@ const Navigation = () => {
 	let val = false;
 	const [username, setUsername] = useState("");
 
+	const [hideNav, setHideNav] = useState(false);
+
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
@@ -30,39 +32,48 @@ const Navigation = () => {
 	return (
 		<>
 			{loginOpen ? <Login loginOpen={() => setLoginOpen(val)} /> : ""}
-
-			<nav className={styles.nav}>
-				<div>
-					{size[0] < 770 ? (
-						<Button small={true} style={{ position: "absolute", top: "0" }}>
-							X
-						</Button>
-					) : (
-						""
-					)}
-					<div className={styles.divcont}>
-						<Link to="/">
-							<Button>MAIN</Button>
-						</Link>
-						<Link to="/profile">
-							<Button>PROFILE </Button>
-						</Link>
-						<Link to="/users">
-							<Button>MESSAGES </Button>
-						</Link>
-						<Link to="/about">
-							<Button>LIKED </Button>
-						</Link>
+			{hideNav ? (
+				<nav style={{ backgroundColor: "#9c6615", padding: "0.5rem" }}>
+					<Button
+						small={true}
+						style={{ position: "absolute", top: "0" }}
+						onClick={() => setHideNav(false)}
+					>
+						X
+					</Button>
+				</nav>
+			) : (
+				<nav className={styles.nav}>
+					<div>
+						{size[0] < 770 ? (
+							<Button
+								small={true}
+								style={{ position: "absolute", top: "0" }}
+								onClick={() => setHideNav(true)}
+							>
+								X
+							</Button>
+						) : (
+							""
+						)}
+						<div className={styles.divcont}>
+							<Link to="/">
+								<Button>MAIN</Button>
+							</Link>
+							<Link to="/profile">
+								<Button>PROFILE </Button>
+							</Link>
+						</div>
 					</div>
-				</div>
-				<div className={styles.divcont}>
-					{username ? (
-						<Button onClick={logout}> SignOut </Button>
-					) : (
-						<Button onClick={() => setLoginOpen(true)}> LOGIN</Button>
-					)}
-				</div>
-			</nav>
+					<div className={styles.divcont}>
+						{username ? (
+							<Button onClick={logout}> SignOut </Button>
+						) : (
+							<Button onClick={() => setLoginOpen(true)}> LOGIN</Button>
+						)}
+					</div>
+				</nav>
+			)}
 		</>
 	);
 };

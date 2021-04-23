@@ -5,7 +5,7 @@ import styles from "../pages/Login.module.css";
 import btnstyle from "../components/elements/Buttons/Button.module.css";
 import { storage, dataBase } from "../firebase";
 import firebase from "firebase";
-const ImageUpload = ({ username, photoURL }) => {
+const ImageUpload = ({ username, photoURL, uid }) => {
 	const [title, setTitle] = useState("");
 	const [progress, setProgress] = useState(0);
 	const [image, setImage] = useState(null);
@@ -45,6 +45,7 @@ const ImageUpload = ({ username, photoURL }) => {
 							image: url,
 							userName: username,
 							photoURL: photoURL,
+							uid: uid,
 						});
 						setProgress(0);
 						setTitle("");

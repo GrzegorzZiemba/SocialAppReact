@@ -19,5 +19,6 @@
 @media (max-width: 770px) {
 	.nav {
 		position: fixed;
+		z-index: 100;
 	}
 }

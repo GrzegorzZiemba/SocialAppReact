@@ -29,10 +29,8 @@ function App() {
 						<Route exact path="/">
 							<Main />{" "}
 						</Route>
-						<Route exact path="/about">
-							{"		About 	"}
-						</Route>
-						<Route exact path="/users">
+
+						<Route exact path="/profile">
 							<Profile username={username} />
 						</Route>
 					</Switch>

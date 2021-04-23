@@ -8,14 +8,15 @@ const Posts = ({ posts }) => {
 	const [username, setUsername] = useState("");
 	const [addItem, setAddItem] = useState(false);
 	const [photo, setPhoto] = useState("");
+	const [uid, setUid] = useState("");
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
 				console.log(authUser.displayName);
 				console.log(authUser.email);
 				console.log(authUser);
-				setUsername(authUser.displayName);
 				setPhoto(authUser.photoURL);
+				setUid(authUser.uid);
 			}
 		});
 	}, [username]);
@@ -23,7 +24,11 @@ const Posts = ({ posts }) => {
 		<>
 			{username ? (
 				<>
-					{addItem ? <ImageUpload username={username} photoURL={photo} /> : ""}
+					{addItem ? (
+						<ImageUpload uid={uid} username={username} photoURL={photo} />
+					) : (
+						""
+					)}
 					<Button onClick={() => setAddItem(!addItem)}>
 						{!addItem ? "Create Post" : "Hide"}
 					</Button>{" "}
@@ -36,7 +41,7 @@ const Posts = ({ posts }) => {
 				<Post
 					key={id}
 					postId={id}
-					userName={username}
+					userName={post.userName}
 					photo={post.photoURL}
 					image={post.image}
 					avatar={post.avatar}
