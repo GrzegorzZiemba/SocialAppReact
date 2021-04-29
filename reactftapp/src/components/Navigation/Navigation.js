@@ -18,7 +18,7 @@ const Navigation = () => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
 				console.log(authUser);
-				setUsername(authUser.displayName);
+				setUsername(authUser.displayName ? authUser.displayName : "nn");
 			}
 		});
 	}, [username]);
