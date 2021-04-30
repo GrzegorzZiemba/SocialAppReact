@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../firebase";
 import Input from "../components/elements/Input/Input";
 import Button from "../components/elements/Buttons/Button";
-const Profile = ({ username }) => {
+const Profile = () => {
+	var userNow = auth.currentUser;
 	const [image, setImage] = useState("");
 	const [user, setUser] = useState("");
+
 	const updateUser = (e) => {
 		e.preventDefault();
-		var userNow = auth.currentUser;
 
 		userNow
 			.updateProfile({
@@ -38,19 +39,19 @@ const Profile = ({ username }) => {
 					<Input
 						type="text"
 						name="Provide URL for your new image"
-						value={username}
 						setChange={(childData) => {
 							setImage(childData);
 						}}
+						value={userNow.photoURL}
 						need="eeee"
 					/>
 					<Input
 						type="text"
 						name="Change you user name"
-						value={user}
 						setChange={(childData) => {
 							setUser(childData);
 						}}
+						value={userNow.displayName}
 						need="noee"
 					/>
 

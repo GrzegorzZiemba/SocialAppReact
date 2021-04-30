@@ -86,9 +86,11 @@ const Post = ({ userName, image, postTitle, photo, postId }) => {
 								width: "90%",
 								backgroundColor: "#9c6615",
 								height: "2rem",
+								color: "white",
+								border: "2px solid white",
 							}}
 							type="text"
-							placeholder="add a comment"
+							placeholder=""
 							value={comment}
 							onChange={(e) => setComment(e.target.value)}
 						/>

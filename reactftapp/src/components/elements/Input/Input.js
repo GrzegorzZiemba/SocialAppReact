@@ -7,7 +7,9 @@ const Input = ({ name, data, setChange = () => {}, type, need }) => {
 			<input
 				className={styles.input}
 				onChange={(e) => {
-					setChange(e.target.value);
+					if (e.target.value != "") {
+						setChange(e.target.value);
+					}
 				}}
 				maxLength="200"
 				value={data}

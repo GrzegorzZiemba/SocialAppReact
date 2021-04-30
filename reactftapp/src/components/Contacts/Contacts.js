@@ -30,7 +30,7 @@ const Contacts = () => {
 						{username ? username : "You need to add your username"}
 					</p>
 					<Button small={true}>
-						<i class="fas fa-envelope"></i>
+						<i className="fas fa-envelope"></i>
 					</Button>
 				</div>
 			) : (
