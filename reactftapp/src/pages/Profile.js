@@ -15,10 +15,7 @@ const Profile = () => {
 				photoURL: image,
 				displayName: user,
 			})
-			.then(function () {
-				console.log(userNow.photoURL);
-				console.log(userNow.displayName);
-			})
+
 			.then(() => window.location.reload(true))
 			.catch(function (error) {
 				console.log(error);

@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./elements/Buttons/Button";
 import Input from "./elements/Input/Input";
 import styles from "../pages/Login.module.css";
 import btnstyle from "../components/elements/Buttons/Button.module.css";
-import { storage, dataBase } from "../firebase";
+import { storage, dataBase, auth } from "../firebase";
 import firebase from "firebase";
-const ImageUpload = ({ username, photoURL, uid }) => {
+const ImageUpload = ({ userName, photoURL, uid }) => {
 	const [title, setTitle] = useState("");
 	const [progress, setProgress] = useState(0);
 	const [image, setImage] = useState(null);
+	const [username, setUsername] = useState("");
+
+	useEffect(() => {
+		auth.onAuthStateChanged((authUser) => {
+			if (authUser) {
+				setUsername(authUser.displayName);
+			} else {
+				setUsername(null);
+			}
+		});
+	}, [username, userName]);
 
 	const handleUpload = (e) => {
 		// Gdyby uzytkownik jakims cudem zaznaczyl wiecej niz 1 element, tak by tylko 1 byl brany pod uwage, stad to [0]

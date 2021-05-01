@@ -17,14 +17,12 @@ const Navigation = () => {
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
-				console.log(authUser);
 				setUsername(authUser.displayName ? authUser.displayName : "nn");
 			}
 		});
 	}, [username]);
 	let size = useWindowSize();
 	const logout = () => {
-		console.log(`${username} logout`);
 		auth.signOut();
 		window.location.reload(true);
 	};

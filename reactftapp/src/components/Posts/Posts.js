@@ -12,11 +12,9 @@ const Posts = ({ posts }) => {
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
-				console.log(authUser.displayName);
-				console.log(authUser.email);
-				console.log(authUser);
 				setPhoto(authUser.photoURL);
 				setUid(authUser.uid);
+				setUsername(authUser);
 			}
 		});
 	}, [username]);

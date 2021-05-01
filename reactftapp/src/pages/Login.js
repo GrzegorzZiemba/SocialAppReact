@@ -14,13 +14,10 @@ const Login = ({ loginOpen }) => {
 	const [radio, setRadio] = useState("");
 
 	useEffect(() => {
-		console.log(`username : ${username.displayName}`);
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
-				console.log("UserLoggedIN");
 				setUser(authUser);
 			} else {
-				console.log("UserLoggedOut");
 				setUser(null);
 			}
 		});
@@ -51,8 +48,6 @@ const Login = ({ loginOpen }) => {
 			.signInWithEmailAndPassword(email, password)
 			.then(loginOpen())
 			.catch((error) => alert(error.message));
-
-		console.log(email, password);
 	};
 	return (
 		<div className={styles.modal}>
@@ -82,6 +77,7 @@ const Login = ({ loginOpen }) => {
 					/>
 					<Input
 						name={"password"}
+						type="password"
 						setChange={(childData) => {
 							setPassword(childData);
 						}}

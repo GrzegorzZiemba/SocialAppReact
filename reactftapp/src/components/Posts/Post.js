@@ -9,19 +9,17 @@ import Comments from "../Comments";
 const Post = ({ userName, image, postTitle, photo, postId }) => {
 	const [comments, setComments] = useState([]);
 	const [comment, setComment] = useState("");
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState("");
 
 	useEffect(() => {
 		auth.onAuthStateChanged((authUser) => {
 			if (authUser) {
-				console.log("UserLoggedIN");
-				setUser(authUser);
+				setUser("Whaeteve");
 			} else {
-				console.log("UserLoggedOut");
 				setUser(null);
 			}
 		});
-	}, [user]);
+	}, [user, userName]);
 
 	useEffect(() => {
 		let unsubscribe;
@@ -104,7 +102,7 @@ const Post = ({ userName, image, postTitle, photo, postId }) => {
 						</Button>
 					</form>
 				) : (
-					""
+					"Notc"
 				)}
 			</div>
 		</>
