@@ -1,12 +1,12 @@
 import firebase from "firebase";
 
 const firebaseConfig = {
-	apiKey: "AIzaSyA5Pj_Aeh6CIU4jexdhGr3d5cMczAbTXIo",
+	apiKey: process.env.API_KEY,
 	authDomain: "socialfbapp-b0154.firebaseapp.com",
 	projectId: "socialfbapp-b0154",
 	storageBucket: "socialfbapp-b0154.appspot.com",
 	messagingSenderId: "9654447737",
-	appId: "1:9654447737:web:4c1adef93a0cabf9962ea8",
+	appId: process.env.APP_ID,
 	measurementId: "G-62X7REJ2H9",
 };
 
